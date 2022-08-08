@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}
+    Login page
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+<h1 class="h3 mb-3 font-weight-normal">
+      Please login
+</h1>
+    <div class="container">
+        <form method="POST" class="form-signin" style="color:white">
+            {{ form.hidden_tag() }}
+
+           <!-- <h1 class="h3 mb-3 font-weight-normal">
+
+            </h1>-->
+            <fieldset class="form-group">
+            <br>
+            <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control ", placeholder="email") }}
+                    {% endif %}
+            </div>
+
+            <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control", placeholder="password") }}
+                    {% endif %}
+            </div>
+                <br>
+            <div class="form-check">
+                {{ form.remember(class="form-check-input") }}
+                {{ form.remember.label(class="form-check-label", style="color:black") }}
+            </div>
+
+            <!--{{ form.submit(class="btn btn-lg btn-block btn-primary") }}-->
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            <small class="text-muted ml-2" >
+                <a href="#">Forgot password?</a>
+            </small>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                New to ReadersCorner.com? <a class="ml-2" href="{{ url_for('register_page') }}">Signup</a>
+            </small>
+         </div>
+    </body>
+{% endblock %}
